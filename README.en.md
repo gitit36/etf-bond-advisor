@@ -72,8 +72,11 @@ The **ETF & Bond Advisor MVP** is a web application that leverages generative AI
 etf_bond_mvp/
 │
 ├── app.py
+├── test_openai.py
 ├── requirements.txt
 ├── README.md
+├── README.en.md
+├── LICENSE
 ├── templates/
 │   ├── base.html
 │   ├── index.html
@@ -95,6 +98,7 @@ etf_bond_mvp/
 │   └── bond_utils.py
 ├── .env
 └── .gitignore
+```
 
 
 - **app.py:** Main file for the Flask application, containing route definitions and view logic.
