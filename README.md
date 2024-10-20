@@ -7,6 +7,7 @@
 ---
 
 ## 목차
+** For English readers: #README.en.md **
 
 - [데모 영상](#데모-영상)
 - [특징](#특징)
