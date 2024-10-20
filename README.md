@@ -1,7 +1,7 @@
-# ETF & Bond Advisor
-# ETF & 채권 어드바이저
+# ETF & Bond Advisor (ETF & 채권 어드바이저)
 
 **Smart investment analysis tool for ETFs and bonds, delivering personalized recommendations and insights.
+
 **ETF 및 채권 추적기 MVP**는 생성형 AI를 활용하여 금융 산업에서의 투자 의사결정을 지원하고, 내부 영업 활동의 효율성을 극대화하는 두 가지 핵심 서비스를 제공하는 웹 애플리케이션입니다. 이 프로젝트는 Flask를 기반으로 구축되었으며, OpenAI의 ChatGPT API와 Yahoo Finance를 통해 실시간 금융 데이터를 통합하여 사용자에게 유용한 정보를 제공합니다.
 
 ---
