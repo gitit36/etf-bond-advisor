@@ -28,8 +28,9 @@
 ### 인사이트 ETF (Insight ETF)
 
 - **뉴스 기사 분석:** 사용자가 제공한 뉴스 기사 URL을 분석하여 관련 해외 ETF 정보를 제공합니다.
-- **실시간 데이터 통합:** OpenAI의 ChatGPT를 사용하여 기사와 관련된 ETF를 추출하고, Yahoo Finance를 통해 최신 종가를 제공합니다.
+- **키워드 분석:** 한개 이상의 키워드로 연관 ETF 를 추천받을 수 있습니다.
 - **다중 기사 및 하이라이트 분석:** 단일 또는 다중 기사, 그리고 기사 내 하이라이트된 부분을 분석할 수 있습니다.
+- **실시간 데이터 통합:** OpenAI의 ChatGPT를 사용하여 기사와 관련된 ETF를 추출하고, Yahoo Finance를 통해 최신 종가를 제공합니다.
 - **신뢰할 수 있는 정보 출처:** RAG(Retrieval-Augmented Generation)를 활용하여 Yahoo Finance, Bloomberg, Morningstar 등의 글로벌 금융 데이터 제공처에서 정보를 수집합니다.
 - **상세 ETF 정보 제공:** 보유 종목 비중, 수수료, 운용보수, 거래 패턴, 글로벌 거래량 등 상세 정보를 함께 제공합니다.
 
@@ -77,7 +78,10 @@ etf_bond_mvp/
 ├── data/
 │   ├── news_articles.csv
 │   ├── etf_list.csv
-│   └── bond_data.csv
+│   ├── bond_data.csv
+│   ├── business_quarterly_report.csv
+│   ├── issue_decision_regular_report.csv
+│   └── market_info.csv
 ├── utils/
 │   ├── openai_utils.py
 │   ├── etf_utils.py
@@ -108,7 +112,7 @@ etf_bond_mvp/
 ### 2. 클론 및 의존성 설치
 
 ```bash
-# 저장소 클론
+# 저장소 클론ㄴ
 git clone https://github.com/yourusername/etf_bond_mvp.git
 cd etf_bond_mvp
 
@@ -166,7 +170,7 @@ python app.py
    - 하나 이상의 뉴스 기사 URL을 쉼표로 구분하여 입력합니다.
    - 예시:
      ```
-     https://n.news.naver.com/mnews/article/003/0012813808, https://another-news-site.com/article/12345
+     https://n.news.naver.com/mnews/article/003/0012813808
      ```
 
 3. **추천 ETF 받기:**
