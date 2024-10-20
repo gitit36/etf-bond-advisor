@@ -8,6 +8,7 @@
 
 ## 목차
 
+- [데모 영상](#데모-영상)
 - [특징](#특징)
 - [기술 스택](#기술-스택)
 - [프로젝트 구조](#프로젝트-구조)
@@ -24,6 +25,10 @@
 - [라이선스](#라이선스)
 
 ---
+
+## 데모 영상
+
+[<img src="https://img.youtube.com/vi/kUqeLoRT7-U/maxresdefault.jpg" width="50%">](https://youtu.be/kUqeLoRT7-U)
 
 ## 특징
 
