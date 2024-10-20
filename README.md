@@ -77,7 +77,7 @@ etf_bond_mvp/
 ├── app.py
 ├── test_openai.py
 ├── requirements.txt
-├── README.ko.md
+├── README.md
 ├── README.en.md
 ├── LICENSE
 ├── templates/
