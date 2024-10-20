@@ -57,8 +57,10 @@
   - [OpenAI API](https://openai.com/api/) - 생성형 AI 모델(ChatGPT)과의 통신
   - [yfinance](https://pypi.org/project/yfinance/) - 야후 파이낸스 API를 통한 실시간 주식 데이터 수집
   - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - 웹 스크래핑
+  - [Pandas](https://pandas.pydata.org/) - 데이터 분석 및 조작을 위한 라이브러리
 - **프론트엔드:**
   - HTML5, CSS3 - 웹 페이지 구조 및 스타일링
+  - [JavaScript](https://www.javascript.com/) - 동적 웹 페이지 기능 구현
 - **데이터베이스:**
   - CSV 파일 - 뉴스 기사, ETF 목록, 채권 데이터 저장
 - **환경 관리:**
