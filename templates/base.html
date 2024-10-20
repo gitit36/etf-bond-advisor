@@ -1,0 +1,30 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>ETF 및 채권 추적기 MVP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">홈</a>
+        <a href="{{ url_for('insight_etf') }}">인사이트 ETF</a>
+        <a href="{{ url_for('bond_tracker') }}">채권트래커</a>
+    </nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof Chart !== 'undefined') {
+            console.log('Chart.js is loaded successfully');
+        } else {
+            console.error('Chart.js is not loaded');
+        }
+    });
+    </script>
+</body>
+</html>

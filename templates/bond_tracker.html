@@ -1,0 +1,122 @@
+<!-- templates/bond_tracker.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bond-tracker-container">
+    <h1>메자닌 채권 트래커</h1>
+
+    <div class="market-overview">
+        <h2>시장 개요</h2>
+        <p>총 시가총액: {{ "{:,.0f}".format(market_overview.total_market_cap) }} 원</p>
+        <p>평균 대주주 지분율: {{ "{:.2f}".format(market_overview.avg_shareholder_ratio) }}%</p>
+        <p>기업 수: {{ market_overview.num_companies }}</p>
+    </div>
+
+    <div class="bond-analysis">
+        <h2>유사 조건의 메자닌 채권 분석</h2>
+        <form id="bondForm" method="POST">
+            <input type="hidden" name="bond_form" value="1">
+            <label for="amount">발행금액 (원):</label>
+            <input type="number" id="amount" name="amount" required>
+            
+            <label for="interest_rate">표면이자율 (%):</label>
+            <input type="number" id="interest_rate" name="interest_rate" step="0.01" required>
+            
+            <button type="submit">분석하기</button>
+        </form>
+
+        {% if similar_bonds %}
+            <div class="similar-bonds">
+                <h3>분석 결과</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>종목명</th>
+                            <th>발행금액 (₩)</th>
+                            <th>표면이자율 (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for bond in similar_bonds %}
+                        <tr>
+                            <td>{{ bond['종목명'] }}</td>
+                            <td>{{ "{:,.0f}".format(bond['총발행금액 (₩)']) }}</td>
+                            <td>{{ bond['표면이자율 (%)'] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% elif form_submitted %}
+            <p>유사한 조건의 메자닌 채권을 찾을 수 없습니다.</p>
+        {% endif %}
+<!-- 
+        <div id="debugInfo">{{ debug_info | safe }}</div> -->
+    </div>
+
+    <div class="potential-issuers">
+        <h2>잠재적 발행 대상 리스트</h2>
+        <p>아래 기준으로 잠재적 발행 대상을 파악합니다:</p>
+        <ul>
+            <li>시가총액</li>
+            <li>부채비율</li>
+            <li>대주주 지분율</li>
+            <li>기발행 사채 만기 도래 시점</li>
+        </ul>
+        <form id="issuerForm" method="POST">
+            <input type="hidden" name="issuer_form" value="1">
+            <label for="min_market_cap">최소 시가총액 (원):</label>
+            <input type="number" id="min_market_cap" name="min_market_cap" value="0">
+            
+            <label for="max_debt_ratio">최대 부채비율 (%):</label>
+            <input type="number" id="max_debt_ratio" name="max_debt_ratio" value="100">
+            
+            <label for="min_shareholder_ratio">최소 대주주 지분율 (%):</label>
+            <input type="number" id="min_shareholder_ratio" name="min_shareholder_ratio" value="0">
+            
+            <label for="months_to_maturity">만기까지 남은 개월 수:</label>
+            <input type="number" id="months_to_maturity" name="months_to_maturity" value="9">
+            
+            <button type="submit">검색하기</button>
+        </form>
+
+        {% if potential_issuers %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>종목명</th>
+                        <th>주가 (원)</th>
+                        <th>시가총액 (원)</th>
+                        <th>최근 분기 매출액 (원)</th>
+                        <th>최근 분기 영업이익 (원)</th>
+                        <th>부채비율 (%)</th>
+                        <th>대주주 지분율 (%)</th>
+                        {% if '기발행사채만기일' in potential_issuers[0] %}
+                        <th>기발행사채만기일</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                {% for issuer in potential_issuers %}
+                    <tr>
+                        <td>{{ issuer['종목명'] }}</td>
+                        <td>{{ "{:,.0f}".format(issuer['주가 (₩)']) }}</td>
+                        <td>{{ "{:,.0f}".format(issuer['시가총액 (₩)']) }}</td>
+                        <td>{{ "{:,.0f}".format(issuer[issuer.keys()|list|last]) }}</td>
+                        <td>{{ "{:,.0f}".format(issuer[issuer.keys()|list|last]) }}</td>
+                        <td>{{ "{:.2f}".format(issuer['부채비율']) }}</td>
+                        <td>{{ "{:.2f}".format(issuer['대주주 지분율(%)']) }}</td>
+                        <!-- {% if '기발행사채만기일' in issuer %} -->
+                        <td>{{ issuer['기발행사채만기일'] }}</td>
+                        <!-- {% endif %} -->
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>조건에 맞는 잠재적 발행 대상이 없습니다.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

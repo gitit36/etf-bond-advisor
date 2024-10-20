@@ -1,0 +1,405 @@
+/* static/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+nav {
+    background-color: #333;
+    padding: 1em;
+}
+
+nav a {
+    color: #f2f2f2;
+    margin-right: 1em;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 2em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flashes li.error {
+    color: red;
+}
+
+.flashes li.success {
+    color: green;
+}
+
+/* static/style.css */
+
+/* 히어로 섹션 스타일 */
+.hero-section {
+    background-color: #f0f8ff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.cta-buttons .btn {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+}
+
+/* ��개 섹션 스타일 */
+.about-section {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 주요 서비스 섹션 스타일 */
+.features-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.features-section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.features-section .feature {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.features-section .feature h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.features-section .feature p {
+    font-size: 1em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 시장 동향 섹션 스타일 */
+.market-trends-section {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.market-trends-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.market-trends-section p {
+    font-size: 1em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 결론 섹션 스타일 */
+.conclusion-section {
+    padding: 40px 20px;
+    background-color: #f0f8ff;
+    text-align: center;
+}
+
+.conclusion-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.conclusion-section p {
+    font-size: 1em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 버튼 스타일 */
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    opacity: 0.8;
+}
+
+.input-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.input-section form {
+    width: 48%;
+}
+
+.input-section input[type="text"] {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+}
+
+.input-section input[type="submit"] {
+    width: 100%;
+    padding: 0.5em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.input-section input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* New styles for the bond tracker page */
+.bond-tracker-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.bond-tracker-container h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.market-overview, .bond-analysis, .potential-issuers {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    margin-bottom: 3em; /* Increased space between sections */
+}
+
+.market-overview h2, .bond-analysis h2, .potential-issuers h2 {
+    color: #007bff;
+    font-size: 1.8em;
+    margin-bottom: 1em;
+}
+
+.market-overview p {
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-bottom: 1.5em;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+form input[type="number"] {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.7em 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.similar-bonds {
+    margin-top: 2em;
+}
+
+.similar-bonds h3 {
+    color: #333;
+    font-size: 1.4em;
+    margin-bottom: 1em;
+}
+
+.similar-bonds ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.similar-bonds li {
+    margin-bottom: 0.5em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 1em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .bond-tracker-container {
+        padding: 1em;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    form input[type="number"] {
+        width: 100%;
+    }
+}
+
+/* 그래프 관련 스타일 제거 */
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 300px;
+    margin-bottom: 20px;
+    border: none;
+    padding: 0;
+}
+
+.bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+}
+
+.bar {
+    width: 40px;
+    background-color: #007bff;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.bar-label {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.x-label {
+    font-size: 12px;
+    text-align: center;
+    word-break: break-all;
+}
+
+#debugInfo {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.chart-container-basic {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 1px solid red;
+    background-color: white;
+}

@@ -1,0 +1,106 @@
+<!-- templates/insight_etf.html -->
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="page-title">인사이트 ETF (Insight ETF)</h2>
+
+<!-- Display Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<div class="input-section">
+    <!-- Input Form for URLs -->
+    <form method="POST" action="{{ url_for('insight_etf_url') }}" class="form-style" onsubmit="showLoading(this);">
+        <h3>뉴스 기사 URL 입력</h3>
+        <input type="text" name="article_urls" placeholder="1개 이상의 URL을 쉼표(,)로 구분하여 입력해주세요." size="80" class="input-field" style="margin-bottom: 0.01px;">
+        <input type="submit" value="URL로 관련 해외 ETF 알아보기" class="submit-button">
+    </form>
+
+    <!-- Input Form for Keywords -->
+    <form method="POST" action="{{ url_for('insight_etf_keywords') }}" class="form-style" onsubmit="showLoading(this);">
+        <h3>키워드 입력</h3>
+        <input type="text" name="keywords" placeholder="1개 이상의 키워드를 쉼표(,)로 구분하여 입력해주세요." size="80" class="input-field" style="margin-bottom: 0.01px;">
+        <input type="submit" value="키워드로 관련 해외 ETF 알아보기" class="submit-button">
+    </form>
+</div>
+
+<div id="loading" style="display:none; position: fixed; bottom: 0; left: 0; right: 0; text-align: center; background-color: #f3f3f3; padding: 10px;">
+    <p id="loading-message">로딩 중... <span id="progress" style="font-weight: bold; font-size: 1.2em;">0%</span></p>
+    <div style="width: calc(100% - 70px); margin: 0 auto; background-color: #f3f3f3; margin-top: 5px; padding: 0 20px;">
+        <div id="progress-bar" style="width: 0%; height: 20px; background-color: #62666a;"></div>
+    </div>
+</div>
+
+<script>
+function showLoading(form) {
+    document.getElementById('loading').style.display = 'block';
+    let progress = 0;
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress');
+    const loadingMessage = document.getElementById('loading-message');
+
+    const interval = setInterval(() => {
+        if (progress >= 100) {
+            clearInterval(interval);
+            loadingMessage.innerHTML = '잠시 기다려주세요...'; // Replace loading message
+        } else {
+            progress++;
+            progressBar.style.width = progress + '%';
+            progressText.innerText = progress + '%';
+        }
+    }, 100); // Adjust the speed of the loading animation (slower)
+}
+</script>
+
+<!-- Display ETF Recommendations -->
+{% if etfs %}
+    <h3 class="recommendation-title">관련된 해외 ETF 리스트</h3>
+    <div class="table-responsive">
+        <table class="etf-table">
+            <tr>
+                <th>No.</th>
+                <th>티커</th>
+                <th>보유종목 Top 5</th>
+                <th>설명</th>
+                <th>보유 종목 비중</th>
+                <th>운용보수</th>
+                {% if etfs[0].get('search_keywords') %}
+                <th>검색 키워드</th>
+                {% else %}
+                <th>출처</th>
+                {% endif %}
+            </tr>
+            {% for etf in etfs %}
+                {% if etf.message %}
+                    <tr>
+                        <td colspan="7">{{ etf.message }} {% if etf.url %}(URL: <a href="{{ etf.url }}" target="_blank">{{ etf.url }}</a>){% endif %}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ etf['ticker'] }}</td>
+                        <td>{{ etf['top5'] }}</td>
+                        <td>{{ etf['explanation'] }}</td>
+                        <td>{{ etf['holdings_weight'] }}</td>
+                        <td>{{ etf['expense_ratio'] }}</td>
+                        {% if etf.get('search_keywords') %}
+                        <td>{{ etf['search_keywords'] }}</td>
+                        {% else %}
+                        <td>{% if etf.get('url') %}<a href="{{ etf['url'] }}" target="_blank">View Article</a>{% else %}N/A{% endif %}</td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+{% elif etfs == '해당 기사와 관련된 ETF가 없습니다' %}
+    <p class="no-results">{{ etfs }}</p>
+{% endif %}
+{% endblock %}

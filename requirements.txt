@@ -1,0 +1,7 @@
+Flask
+openai
+pandas
+python-dotenv
+requests
+yfinance
+beautifulsoup4
